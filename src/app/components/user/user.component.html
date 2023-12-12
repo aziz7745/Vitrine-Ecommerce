@@ -1,0 +1,55 @@
+<nav>
+    <ul>
+<li><a href="#catégories">Catégories des Produits</a></li>
+<li><a routerLink="/client/creation-commande">Commander</a></li>
+<li><a href="#offres">Offres & Promos</a></li>
+<li id="login"><a href="#services"  data-toggle="modal" data-target="#loginModal">Login</a></li>
+</ul>
+</nav>
+
+
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" >
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="card" style="height: 9cm;">   
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalCenterTitle" style="color: black; ">Login</h3>
+        </div>
+        <div class="modal-body">
+
+          <form #f=ngForm>
+            <div class="form-group">
+                <input type="mail" class="form-control" name="email" placeholder="Votre mail ...." ngModel required #p="ngModel">           
+              </div>
+            <section  *ngIf="p.invalid && p.touched">
+                <small  style="color: danger;" class="form-text text-muted">Mail is required File </small>
+            </section>
+
+              <div class="form-group">
+                <input type="password" class="form-control" name="password" placeholder="Votre Password ...." ngModel required minlength="3" #t="ngModel"  > 
+              </div>
+              <section *ngIf="t.invalid && t.touched">
+                  <small  style="color: danger;"  *ngIf="t.errors?.['required']">The password is required File.<br/></small>
+                  <small  style="color: danger;" *ngIf="t.errors?.['minlength']">The password minlength minimum is equal to 3.<br/></small>
+              </section>
+             <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary" (click)="Login(f)"    [disabled]="f.invalid" data-dismiss="modal" >Login</button>
+              </div>
+              
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  
+<!---------------------- Acceuil-------- -->
+<section id="content" class="align-items-center">
+  <div class="position-relative">
+         
+    </div>
+  </section>
+
+  <!-- login -->
+ 

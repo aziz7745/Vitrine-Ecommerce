@@ -1,0 +1,43 @@
+<div class="col-lg-15 grid-margin stretch-card" style="margin-left: 6cm ;margin-top: 2cm;">
+    <div class="card" style="width: 35cm;">
+      <div class="card-body">
+        <h4 class="card-title">Commandes</h4>
+        
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Id_Produit</th>
+                <th>Utilisateur</th>
+                <th>Num_Tel</th>
+                <th>Adresse</th>
+                <th>Nom_Produit</th>
+                <th>Qte</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let cmd of commande">
+                <td>{{cmd.idprod}}</td>
+                <td>{{cmd.propretaire}}</td>
+                <td class="text-danger">{{cmd.NumTel}}</td>
+                <td>{{cmd.Adresse}}</td>
+                <td class="text-danger"> {{cmd.nompro}}</td>
+                <td> {{cmd.qte}}</td>
+      
+                <td *ngIf="cmd.Statut==false"><label class="badge badge-danger">Refuser</label></td>
+                <td *ngIf="cmd.Statut==true"><label class="badge badge-primary">Validé</label></td>
+                <td>
+                    <button class="badge badge-primary" (click)="setChangeStatut(cmd)" [disabled]="disable">Confirmer</button>
+                    <button class="badge badge-danger"(click)="Delete(cmd)">Supprimer</button>
+                </td>
+              </tr>
+             
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>

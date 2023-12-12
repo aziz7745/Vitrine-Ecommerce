@@ -1,0 +1,90 @@
+<div *ngIf="listproduit.length>1">
+
+<div class="row" style="margin-left: 4cm; ">
+         
+    <div class="col-12 col-md-6 col-xl-4" *ngFor="let prod of listproduit">
+        <div class="card" style="margin-top: 2cm; height: 400px;"> 
+            <img class="card-img-top" [src]="prod.image" alt="Card image cap" style="object-fit: cover; height: 100%;"> 
+          
+            <div class="car__footer" style="position: absolute; bottom: 0; left: 0; right: 0; background-color: rgba(255, 255, 255, 0.8); padding: 10px;">
+                <span class="car__price">{{ prod.nom }} </span>
+                <span class="car__price">{{ prod.prix }} <sub>/ dinard</sub></span>
+                <a href="#services"  (click)="setIdProduit(prod.id,prod.nom)" data-toggle="modal" data-target="#ReserverModal" class="car__more" ><span>Commander</span></a>
+            </div>
+        </div>
+    </div>
+    <!-- end car -->
+</div>
+</div>
+
+
+
+  <div *ngIf="listproduit.length===1">
+    <div class="row" style="margin-left: 4cm;">
+        <div class="col-12 col-md-6 col-xl-6" *ngFor="let prod of listproduit">
+            <div class="card" style="margin-top: 2cm; height: 400px;width: 550px;"> 
+              <img class="card-img-top" [src]="prod.image" alt="Card image cap" style="object-fit: cover; height: 100%;"> 
+            
+              <div class="car__footer" style="position: absolute; bottom: 0; left: 0; right: 0; background-color: rgba(255, 255, 255, 0.8); padding: 10px;">
+                  <span class="car__price">{{ prod.nom }} </span>
+                  <span class="car__price">{{ prod.prix }} <sub> dinard</sub></span>
+                  <a href="#services"  (click)="setIdProduit(prod.id,prod.nom)" data-toggle="modal" data-target="#ReserverModal" class="car__more" ><span>Commander</span></a>
+              </div>
+          </div>
+      </div>
+      <!-- end car -->
+  </div>
+  </div>
+
+<div class="modal fade" id="ReserverModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" >
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="card" style="height: 12cm;">   
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalCenterTitle" style="color: black; ">Commander</h3>
+        </div>
+        <div class="modal-body">
+
+          <form #r=ngForm>
+            <div class="form-group">
+                <input type="text" class="form-control" name="nompre" placeholder="Votre Nom et Prenom" ngModel required #p="ngModel">           
+              </div>
+            <section  *ngIf="p.invalid && p.touched">
+                <small  style="color: danger;" class="form-text text-muted">Vos coordonés est necéssaire </small>
+            </section>
+            <div class="form-group">
+              <input type="number" class="form-control" name="qte" placeholder="Qte Commander" ngModel required  #s="ngModel"  > 
+            </div>
+            <section *ngIf="s.invalid && s.touched">
+                <small  style="color: danger;"  *ngIf="k.errors?.['required']">Quantité commander is required .<br/></small>
+  
+            </section>
+              <div class="form-group">
+                <input type="text" class="form-control" name="numtel" placeholder="Votre Numéro de teléphone" ngModel required minlength="8" maxlength="8" #t="ngModel"  > 
+              </div>
+              <section *ngIf="t.invalid && t.touched">
+                  <small  style="color: danger;"  *ngIf="t.errors?.['required']">Votre number phone is required .<br/></small>
+                  <small  style="color: danger;" *ngIf="t.errors?.['minlength']">Saisir un numéro valide<br/></small>
+                  <small  style="color: danger;" *ngIf="t.errors?.['maxlength']">Saisir un numéro valide<br/></small>
+              </section>
+              <div class="form-group">
+                <input type="text" class="form-control" name="adresse" placeholder="Votre Adresse" ngModel required  #k="ngModel"  > 
+              </div>
+              <section *ngIf="k.invalid && k.touched">
+                  <small  style="color: danger;"  *ngIf="k.errors?.['required']">Votre Adresse is required .<br/></small>
+    
+              </section>
+              
+              
+             <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary" (click)="Commander(r)"  [disabled]="r.invalid" data-dismiss="modal" >Confirmer</button>
+              </div>
+              
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+<!-- fin creation de reservation -->

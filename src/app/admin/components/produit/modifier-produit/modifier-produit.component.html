@@ -1,0 +1,55 @@
+<div class="col-md-6 grid-margin stretch-card" style="margin-left: 10cm; margin-top: 1%; ;">
+    <div class="card" style="width: 50cm;">
+      <div class="card-body">
+          <h4 class="card-title">Modifier votre voiture</h4>
+          <p class="card-description">
+          </p>
+          <form class="forms-sample" #f=ngForm (submit)="Updateprod(f)">
+              <div class="form-group">
+                  <label for="exampleInputUsername1">Photo</label>
+                  <input type="file" id="imageInput" (change)="onFileSelected($event)" accept="image/*" class="form-control"  ngModel #t="ngModel" name="image">
+    </div>
+                
+              <div class="form-group">
+                <label for="exampleInputUsername1">Matricule</label>
+                <input type="text" name="mat" class="form-control"  placeholder="A012" [(ngModel)]="produitData.matricule" ngModel #w="ngModel" required>
+              </div>
+              <section  *ngIf="w.invalid && w.touched">
+                <small  style="color: danger;" class="form-text text-muted">Matricule is required File </small>
+            </section>
+            <div class="form-group">
+              <label for="exampleInputUsername1">Categorie</label>
+                <input type="text"  name="categorie" class="form-control"   placeholder="bio" [(ngModel)]="produitData.categorie" ngModel #l="ngModel" required>
+            </div>
+            <section  *ngIf="l.invalid && l.touched"> 
+              <small  style="color: danger;" class="form-text text-muted" *ngIf="l.errors?.['required']">Catégorie is required File.<br/></small>
+
+          </section>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Nom</label>
+              <input type="text"  name="nom" class="form-control"  placeholder="Ecran solaire" [(ngModel)]="produitData.nom" ngModel #p="ngModel" required >
+            </div>
+            <section  *ngIf="p.invalid && p.touched">
+              <small  style="color: danger;" class="form-text text-muted" *ngIf="p.errors?.['required']">Nom is required File.<br/></small>
+          </section>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Prix</label>
+              <input type="text"  name="prix" class="form-control" [(ngModel)]="produitData.prix" placeholder="25000 dinar" ngModel #h="ngModel" required >
+            </div>
+            <section  *ngIf="h.invalid && h.touched">
+              <small  style="color: danger;" class="form-text text-muted" *ngIf="h.errors?.['required']">Prix is required File.<br/></small>
+          </section>
+            
+            <div class="form-group">
+              <label for="exampleInputConfirmPassword1">Quantité</label>
+              <input type="number" name="qte"  class="form-control" [(ngModel)]="produitData.qte" placeholder="22 piece" ngModel #x="ngModel" required>
+            </div>
+            <section  *ngIf="x.invalid && x.touched">
+              <small  style="color: danger;" class="form-text text-muted" *ngIf="x.errors?.['required']">Quantité is required File.<br/></small>
+          </section>
+            <button type="submit" class="btn btn-primary me-2" [disabled]="f.invalid">Submit</button>
+            <button class="btn btn-light" routerLink="/produit/">Cancel</button>
+          </form>
+        </div>
+      </div>
+    </div>

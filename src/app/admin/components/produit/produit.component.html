@@ -1,0 +1,48 @@
+
+<div class="container-scroller">
+  
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-top">
+        <ul class="navbar-nav">
+          <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
+            <h1 class="welcome-text">Bonjour, <span class="text-black fw-bold">Chef</span></h1>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  
+  
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar" style="position: fixed; width: 4cm;" >
+        <ul class="nav" style="margin-top: 0px; position: fixed;" >
+          <li class="nav-item">
+            <a class="nav-link"  routerLink="/produit/">
+              <span class="menu-title">Produits</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  routerLink="/produit/ajouter-produit">
+              <span class="menu-title">Ajouter Produit</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/produit/commandes">
+          
+              <span class="menu-title">Commandes</span>
+            </a>
+          </li>
+        
+        </ul>
+      </nav>
+    
+     <router-outlet ></router-outlet>
+    
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
